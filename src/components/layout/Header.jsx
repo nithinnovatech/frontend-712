@@ -164,13 +164,14 @@ const Header = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden p-2 rounded-lg z-[60] relative touch-target"
+                        className="lg:hidden p-2 rounded-lg z-[101] relative pointer-events-auto"
                         onClick={(e) => {
                             e.stopPropagation();
                             setIsMobileMenuOpen(!isMobileMenuOpen);
                         }}
                         aria-label="Toggle menu"
                         type="button"
+                        style={{ minWidth: '44px', minHeight: '44px' }}
                     >
                         {isMobileMenuOpen ? (
                             <X className={`w-6 h-6 ${isScrolled || isMobileMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'}`} />

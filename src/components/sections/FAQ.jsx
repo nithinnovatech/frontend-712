@@ -64,11 +64,11 @@ const FAQ = () => {
                                 Our friendly team is here to help you with any questions you might have.
                             </p>
                             <a
-                                href="tel:+19139807242"
+                                href="tel:+19132446113"
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-600 rounded-xl font-semibold hover:bg-primary-50 transition-colors"
                             >
                                 <Phone className="w-5 h-5" />
-                                Call (913) 980-7242
+                                Call (913) 244-6113
                             </a>
                         </div>
                     </motion.div>

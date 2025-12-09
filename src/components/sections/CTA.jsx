@@ -43,11 +43,11 @@ const CTA = () => {
                             Book a Service
                         </button>
                         <a
-                            href="tel:+19139807242"
+                            href="tel:+19132446113"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                         >
                             <Phone className="w-5 h-5" />
-                            Call Now: (913) 980-7242
+                            Call Now: (913) 244-6113
                         </a>
                     </div>
                 </motion.div>

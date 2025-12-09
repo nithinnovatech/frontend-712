@@ -29,11 +29,22 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="relative"
+                        className="relative overflow-visible"
+                        style={{ maxWidth: '100vw' }}
                     >
-                        <div className="relative">
+                        <div className="relative overflow-visible" style={{ maxWidth: '100%' }}>
                             {/* Scrollable Service Gallery */}
-                            <div className="overflow-x-auto scrollbar-hide pb-4">
+                            <div
+                                className="overflow-x-scroll scrollbar-hide pb-4 -mx-4 px-4 lg:mx-0 lg:px-0"
+                                style={{
+                                    WebkitOverflowScrolling: 'touch',
+                                    touchAction: 'pan-x pan-y',
+                                    overflowX: 'scroll',
+                                    maxWidth: 'calc(100vw - 2rem)',
+                                    pointerEvents: 'auto',
+                                    userSelect: 'none',
+                                }}
+                            >
                                 <div className="flex gap-4" style={{ width: 'max-content' }}>
                                     {[
                                         { title: 'Air Duct Cleaning', image: '/images/services/air-duct-cleaning.png' },
@@ -43,15 +54,15 @@ const About = () => {
                                         { title: 'Dryer Cleaning', image: '/images/services/dryer-cleaning.png' },
                                         { title: 'Fireplace Inspection', image: '/images/services/fireplace-inspection.png' },
                                     ].map((service, index) => (
-                                        <div key={index} className="flex-shrink-0 w-72 sm:w-80">
-                                            <div className="rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+                                        <div key={index} className="flex-shrink-0" style={{ width: 'calc(50vw - 2.5rem)' }}>
+                                            <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300 bg-gray-100">
                                                 <img
                                                     src={service.image}
                                                     alt={service.title}
-                                                    className="w-full h-[400px] sm:h-[500px] object-cover"
+                                                    className="w-full h-64 sm:h-96 object-contain"
                                                 />
                                             </div>
-                                            <p className="text-center mt-3 font-semibold text-gray-800">{service.title}</p>
+                                            <p className="text-center mt-2 sm:mt-3 font-semibold text-gray-800 text-sm sm:text-base">{service.title}</p>
                                         </div>
                                     ))}
                                 </div>

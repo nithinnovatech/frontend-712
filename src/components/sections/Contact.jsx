@@ -10,6 +10,7 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
+        address: '',
         service: '',
         message: '',
     });
@@ -36,6 +37,7 @@ const Contact = () => {
                 from_name: formData.name,
                 from_email: formData.email,
                 phone: formData.phone,
+                address: formData.address,
                 service: formData.service,
                 message: formData.message,
                 to_name: 'UnitedKcServices',
@@ -48,6 +50,7 @@ const Contact = () => {
                 name: '',
                 email: '',
                 phone: '',
+                address: '',
                 service: '',
                 message: '',
             });
@@ -227,6 +230,23 @@ const Contact = () => {
                                             placeholder="(913) 123-4567"
                                         />
                                     </div>
+                                </div>
+
+                                {/* Address */}
+                                <div>
+                                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Address *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        value={formData.address}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+                                        placeholder="123 Main Street, City, State ZIP"
+                                    />
                                 </div>
 
                                 {/* Service */}

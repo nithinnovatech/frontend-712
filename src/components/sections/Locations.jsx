@@ -87,8 +87,8 @@ const Locations = () => {
                             <Link
                                 to={location.path}
                                 className={`block h-full p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 ${location.featured
-                                        ? 'bg-gradient-to-br from-primary-500 to-secondary-500 shadow-2xl'
-                                        : 'bg-white/10 backdrop-blur-sm hover:bg-white/20'
+                                    ? 'bg-gradient-to-br from-primary-500 to-secondary-500 shadow-2xl'
+                                    : 'bg-white/10 backdrop-blur-sm hover:bg-white/20'
                                     }`}
                             >
                                 <div className="flex items-center gap-3 mb-4">
@@ -111,8 +111,8 @@ const Locations = () => {
                                         <span
                                             key={service}
                                             className={`px-3 py-1 rounded-full text-xs font-medium ${location.featured
-                                                    ? 'bg-white/20 text-white'
-                                                    : 'bg-white/10 text-gray-300'
+                                                ? 'bg-white/20 text-white'
+                                                : 'bg-white/10 text-gray-300'
                                                 }`}
                                         >
                                             {service}
@@ -140,11 +140,11 @@ const Locations = () => {
                 >
                     <p className="text-gray-300 mb-4">Don&apos;t see your area? Give us a call!</p>
                     <a
-                        href="tel:+19139807242"
+                        href="tel:+19132446113"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                     >
                         <Phone className="w-5 h-5" />
-                        Call (913) 980-7242
+                        Call (913) 244-6113
                     </a>
                 </motion.div>
             </div>
