@@ -96,11 +96,11 @@ const About = () => {
                             About UnitedKcServices
                         </span>
 
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6 break-words">
                             Your Trusted Partner for Clean, Healthy Air
                         </h2>
 
-                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                        <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
                             At UnitedKcServices, we connect you with trusted, experienced technicians across Kansas City
                             who specialize in air duct cleaning and HVAC maintenance services.
                         </p>
