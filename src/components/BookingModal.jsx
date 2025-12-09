@@ -298,7 +298,7 @@ const BookingModal = () => {
                             <div>
                                 <label htmlFor="booking-address" className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
                                     <MapPin className="w-4 h-4 text-primary-500" />
-                                    Service Address *
+                                    Address *
                                 </label>
                                 <input
                                     type="text"
@@ -377,11 +377,11 @@ const BookingModal = () => {
                             <div className="text-center pt-4 border-t border-gray-100">
                                 <p className="text-gray-600 text-sm mb-2">Prefer to talk to someone?</p>
                                 <a
-                                    href="tel:+19139807242"
+                                    href="tel:+19132446113"
                                     className="inline-flex items-center gap-2 text-primary-500 font-semibold hover:text-primary-600"
                                 >
                                     <Phone className="w-5 h-5" />
-                                    Call (913) 980-7242
+                                    Call (913) 244-6113
                                 </a>
                             </div>
                         </form>

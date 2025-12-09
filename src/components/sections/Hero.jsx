@@ -36,16 +36,15 @@ const Hero = () => {
                     >
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-primary-300 text-xs sm:text-sm mb-4 sm:mb-6">
                             <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
-                            <span>Trusted by 10,000+ Homeowners</span>
+                            <span>Expert Technicians & Quality Services</span>
                         </div>
 
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-4 sm:mb-6 leading-tight">
-                            Expert <span className="text-gradient">Air Duct Cleaning</span> Services in Kansas City
+                            Find Trusted <span className="text-gradient">Air Duct Cleaning</span> Technicians in Kansas City
                         </h1>
 
                         <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            Breathe cleaner, healthier air. Our professional duct cleaning services remove dust,
-                            allergens, and pollutants, improving your home&apos;s air quality and HVAC efficiency.
+                            We help you find trusted, experienced technicians across Kansas City who specialize in air duct cleaning. Our network of professionals delivers high-quality service, cleaner air, and better HVAC efficiency, so you get the right solution for your home without any hassle.
                         </p>
 
                         {/* Features - Scroll horizontally on mobile */}
@@ -71,11 +70,11 @@ const Hero = () => {
                                 <ArrowRight className="w-5 h-5" />
                             </button>
                             <a
-                                href="tel:+19139807242"
+                                href="tel:+19132446113"
                                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/30 hover:bg-white/10 text-white rounded-xl font-semibold transition-all duration-300"
                             >
                                 <Phone className="w-5 h-5" />
-                                (913) 980-7242
+                                (913) 244-6113
                             </a>
                         </div>
                     </motion.div>
@@ -97,7 +96,6 @@ const Hero = () => {
                                 />
                             </div>
 
-                            {/* Floating Card */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -109,8 +107,8 @@ const Hero = () => {
                                         <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500" />
                                     </div>
                                     <div>
-                                        <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">10,000+</p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400">Happy Customers</p>
+                                        <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Expert</p>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">Technicians</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -123,14 +121,9 @@ const Hero = () => {
                                 className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 p-3 sm:p-4 rounded-2xl shadow-xl"
                             >
                                 <div className="flex items-center gap-2">
-                                    <div className="flex">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
-                                        ))}
-                                    </div>
-                                    <span className="font-bold text-gray-900 dark:text-white">4.9</span>
+                                    <Shield className="w-8 h-8 text-primary-500" />
                                 </div>
-                                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">Google Reviews</p>
+                                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">Quality Service</p>
                             </motion.div>
                         </div>
                     </motion.div>
@@ -143,18 +136,14 @@ const Hero = () => {
                         className="lg:hidden grid grid-cols-2 gap-4 mt-4"
                     >
                         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                            <div className="flex justify-center mb-2">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                                ))}
-                            </div>
-                            <p className="text-2xl font-bold text-white">4.9</p>
-                            <p className="text-xs text-gray-300">Google Rating</p>
+                            <Shield className="w-8 h-8 text-primary-400 mx-auto mb-2" />
+                            <p className="text-2xl font-bold text-white">Expert</p>
+                            <p className="text-xs text-gray-300">Technicians</p>
                         </div>
                         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
                             <CheckCircle className="w-8 h-8 text-primary-400 mx-auto mb-2" />
-                            <p className="text-2xl font-bold text-white">10k+</p>
-                            <p className="text-xs text-gray-300">Happy Customers</p>
+                            <p className="text-2xl font-bold text-white">Quality</p>
+                            <p className="text-xs text-gray-300">Service</p>
                         </div>
                     </motion.div>
                 </div>

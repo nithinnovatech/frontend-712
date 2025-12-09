@@ -7,13 +7,22 @@ import Footer from '../components/layout/Footer';
 import CTA from '../components/sections/CTA';
 import { useBooking } from '../components/BookingModal';
 
+const allServices = [
+    'Air Duct Cleaning',
+    'Residential Air Duct Cleaning',
+    'Commercial Air Duct Cleaning',
+    'Chimney Sweep',
+    'Fireplace Inspection',
+    'Dryer Vent Cleaning'
+];
+
 const serviceAreas = [
     {
         id: 1,
         city: 'Kansas City',
         state: 'MO & KS',
         description: 'Serving the greater Kansas City metropolitan area including both Missouri and Kansas sides. We cover downtown KC, Westport, Country Club Plaza, and all surrounding neighborhoods.',
-        services: ['Residential Air Duct Cleaning', 'Commercial Air Duct Cleaning', 'Chimney Sweep', 'Fireplace Inspection', 'Dryer Vent Cleaning'],
+        services: allServices,
         path: '/service-areas/kansas-city',
         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
         featured: true,
@@ -23,7 +32,7 @@ const serviceAreas = [
         city: 'Topeka',
         state: 'KS',
         description: 'Professional air duct cleaning and HVAC services for the capital city of Kansas. We serve all Topeka neighborhoods and surrounding communities.',
-        services: ['Residential Air Duct Cleaning', 'Commercial Air Duct Cleaning', 'Chimney Sweep'],
+        services: allServices,
         path: '/service-areas/topeka',
         image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80',
         featured: false,
@@ -33,7 +42,7 @@ const serviceAreas = [
         city: 'Lawrence',
         state: 'KS',
         description: 'Complete duct cleaning solutions for Lawrence homes and businesses. From the University of Kansas area to all residential neighborhoods.',
-        services: ['Residential Air Duct Cleaning', 'Commercial Air Duct Cleaning', 'Dryer Vent Cleaning'],
+        services: allServices,
         path: '/service-areas/lawrence',
         image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80',
         featured: false,
@@ -43,7 +52,7 @@ const serviceAreas = [
         city: 'St. Joseph',
         state: 'MO',
         description: 'Quality air duct services for St. Joseph and the surrounding northwest Missouri region. Reliable, professional service you can trust.',
-        services: ['Residential Air Duct Cleaning', 'Commercial Air Duct Cleaning', 'Chimney Sweep'],
+        services: allServices,
         path: '/service-areas/st-joseph',
         image: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=600&q=80',
         featured: false,
@@ -53,7 +62,7 @@ const serviceAreas = [
         city: 'Overland Park',
         state: 'KS',
         description: 'Expert HVAC and duct cleaning for Overland Park residents and businesses. Serving Johnson County with excellence.',
-        services: ['Residential Air Duct Cleaning', 'Commercial Air Duct Cleaning', 'Dryer Vent Cleaning'],
+        services: allServices,
         path: '/service-areas/overland-park',
         image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80',
         featured: false,
@@ -63,7 +72,7 @@ const serviceAreas = [
         city: 'Olathe',
         state: 'KS',
         description: 'Complete air duct and HVAC cleaning services for Olathe and surrounding Johnson County areas.',
-        services: ['Residential Air Duct Cleaning', 'Commercial Air Duct Cleaning'],
+        services: allServices,
         path: '/service-areas/olathe',
         image: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?w=600&q=80',
         featured: false,
@@ -144,15 +153,12 @@ const ServiceAreasPage = () => {
 
                                             {/* Services */}
                                             <div className="space-y-2 mb-6">
-                                                {area.services.slice(0, 3).map((service) => (
+                                                {area.services.map((service) => (
                                                     <div key={service} className="flex items-center gap-2 text-sm text-gray-600">
                                                         <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                                                         {service}
                                                     </div>
                                                 ))}
-                                                {area.services.length > 3 && (
-                                                    <p className="text-sm text-primary-500">+ {area.services.length - 3} more services</p>
-                                                )}
                                             </div>
 
                                             {/* CTA */}
@@ -185,11 +191,11 @@ const ServiceAreasPage = () => {
                                 and service needs. We&apos;re always expanding our service area.
                             </p>
                             <a
-                                href="tel:+19139807242"
+                                href="tel:+19132446113"
                                 className="inline-flex items-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                             >
                                 <Phone className="w-5 h-5" />
-                                Call (913) 980-7242
+                                Call (913) 244-6113
                             </a>
                         </motion.div>
                     </div>

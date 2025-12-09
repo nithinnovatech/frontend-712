@@ -74,9 +74,9 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-lg'
-                    : 'bg-transparent'
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled
+                ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-lg'
+                : 'bg-transparent'
                 }`}
         >
             <div className="container-custom">
@@ -85,18 +85,20 @@ const Header = () => {
                     <Link to="/" className="flex items-center gap-2 sm:gap-3 z-50">
                         {/* Logo Image */}
                         <div className="relative">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-md">
-                                <Wind className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
-                            </div>
+                            <img
+                                src="/images/logo-icon.png"
+                                alt="UnitedKcServices Logo"
+                                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain"
+                            />
                         </div>
                         <div className="flex flex-col">
                             <span className={`text-lg sm:text-xl font-bold font-heading leading-tight ${isScrolled || isMobileMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'
                                 }`}>
-                                I&A <span className="text-primary-500">Services</span>
+                                UnitedKc<span className="text-primary-500">Services</span>
                             </span>
                             <span className={`text-[10px] sm:text-xs font-medium hidden sm:block ${isScrolled || isMobileMenuOpen ? 'text-gray-500' : 'text-white/70'
                                 }`}>
-                                Air Duct Cleaning Experts
+                                Connecting You to Local Experts
                             </span>
                         </div>
                     </Link>
@@ -113,8 +115,8 @@ const Header = () => {
                                 <Link
                                     to={link.path}
                                     className={`flex items-center gap-1 px-3 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base ${isScrolled
-                                            ? 'text-gray-700 hover:text-primary-500 hover:bg-primary-50 dark:text-gray-300 dark:hover:text-primary-400'
-                                            : 'text-white/90 hover:text-white hover:bg-white/10'
+                                        ? 'text-gray-700 hover:text-primary-500 hover:bg-primary-50 dark:text-gray-300 dark:hover:text-primary-400'
+                                        : 'text-white/90 hover:text-white hover:bg-white/10'
                                         } ${location.pathname === link.path ? 'text-primary-500' : ''}`}
                                 >
                                     {link.name}
@@ -151,25 +153,29 @@ const Header = () => {
                     {/* CTA Button - Desktop */}
                     <div className="hidden lg:flex items-center gap-4">
                         <a
-                            href="tel:+19139807242"
+                            href="tel:+19132446113"
                             className="flex items-center gap-2 px-4 xl:px-5 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-sm xl:text-base"
                         >
                             <Phone className="w-4 h-4" />
-                            <span className="hidden xl:inline">(913) 980-7242</span>
+                            <span className="hidden xl:inline">(913) 244-6113</span>
                             <span className="xl:hidden">Call Us</span>
                         </a>
                     </div>
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden p-2 rounded-lg z-50 touch-target"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="lg:hidden p-2 rounded-lg z-[60] relative touch-target"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsMobileMenuOpen(!isMobileMenuOpen);
+                        }}
                         aria-label="Toggle menu"
+                        type="button"
                     >
                         {isMobileMenuOpen ? (
-                            <X className={`w-6 h-6 ${isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'}`} />
+                            <X className={`w-6 h-6 ${isScrolled || isMobileMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'}`} />
                         ) : (
-                            <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
+                            <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`} />
                         )}
                     </button>
                 </div>
@@ -238,11 +244,11 @@ const Header = () => {
                             {/* Mobile CTA */}
                             <div className="mt-8 space-y-4 px-4">
                                 <a
-                                    href="tel:+19139807242"
+                                    href="tel:+19132446113"
                                     className="flex items-center justify-center gap-3 w-full py-4 bg-accent-500 text-white rounded-xl font-semibold text-lg shadow-lg"
                                 >
                                     <Phone className="w-5 h-5" />
-                                    Call (913) 980-7242
+                                    Call (913) 244-6113
                                 </a>
                                 <Link
                                     to="/contact"

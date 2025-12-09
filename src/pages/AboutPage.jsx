@@ -25,10 +25,10 @@ const AboutPage = () => {
     ];
 
     const stats = [
-        { value: '15+', label: 'Years Experience' },
-        { value: '10,000+', label: 'Happy Customers' },
-        { value: '50,000+', label: 'Ducts Cleaned' },
-        { value: '100%', label: 'Satisfaction Rate' },
+        { value: 'Skilled & Trained', label: 'Technicians' },
+        { value: 'Serving Kansas City', label: '& Nearby Areas' },
+        { value: 'Modern Tools &', label: 'Thorough Cleaning' },
+        { value: 'Customer-Focused', label: 'Service Philosophy' },
     ];
 
     return (
@@ -50,8 +50,8 @@ const AboutPage = () => {
                                 Your Trusted Partner for Clean, Healthy Air
                             </h1>
                             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                                For over 15 years, I&A Services has been the premier air duct cleaning
-                                company in the Kansas City metropolitan area.
+                                UnitedKcServices connects you with trusted, experienced technicians
+                                across Kansas City who specialize in air duct cleaning and HVAC services.
                             </p>
                         </motion.div>
                     </div>
@@ -77,8 +77,8 @@ const AboutPage = () => {
                                     />
                                 </div>
                                 <div className="absolute -bottom-8 -right-8 bg-gradient-to-r from-primary-500 to-secondary-500 text-white p-8 rounded-3xl shadow-2xl">
-                                    <p className="text-5xl font-bold">15+</p>
-                                    <p className="text-lg font-medium">Years of Excellence</p>
+                                    <p className="text-3xl font-bold">Expert</p>
+                                    <p className="text-lg font-medium">Technicians</p>
                                 </div>
                             </motion.div>
 
@@ -96,21 +96,20 @@ const AboutPage = () => {
                                     Built on Trust, Driven by Excellence
                                 </h2>
                                 <p className="text-lg text-gray-600 mb-6">
-                                    Founded in 2009, I&A Services started with a simple mission: to provide
-                                    the highest quality air duct cleaning services to the Kansas City community.
-                                    What began as a small family operation has grown into one of the region&apos;s
-                                    most trusted HVAC cleaning companies.
+                                    UnitedKcServices was founded with a clear mission: to connect homeowners and
+                                    businesses with the most skilled and trusted air duct cleaning technicians in
+                                    Kansas City. We carefully vet our network of professionals to ensure you receive
+                                    exceptional service every time.
                                 </p>
                                 <p className="text-gray-600 mb-6">
-                                    Our team of certified professionals brings years of experience and a
-                                    commitment to excellence to every project. We invest in the latest
-                                    equipment and ongoing training to ensure our customers receive the
-                                    best service possible.
+                                    Our network of certified technicians brings expertise and a commitment to
+                                    excellence to every project. They use the latest equipment and proven techniques
+                                    to ensure customers receive the best service possible.
                                 </p>
                                 <p className="text-gray-600 mb-8">
-                                    Today, we&apos;re proud to serve thousands of homeowners and businesses
-                                    across Kansas City, Topeka, Lawrence, and St. Joseph. Our reputation
-                                    is built on quality work, honest pricing, and exceptional customer service.
+                                    We're proud to serve homeowners and businesses across Kansas City and nearby areas.
+                                    Our reputation is built on quality work, honest pricing, and a customer-focused
+                                    service philosophy that puts your needs first.
                                 </p>
 
                                 {/* Certifications */}
@@ -179,7 +178,7 @@ const AboutPage = () => {
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     className="text-center text-white"
                                 >
-                                    <p className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</p>
+                                    <p className="text-3xl md:text-4xl font-bold mb-2">{stat.value}</p>
                                     <p className="text-primary-100">{stat.label}</p>
                                 </motion.div>
                             ))}

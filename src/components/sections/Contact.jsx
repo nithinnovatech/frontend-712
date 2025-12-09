@@ -38,7 +38,7 @@ const Contact = () => {
                 phone: formData.phone,
                 service: formData.service,
                 message: formData.message,
-                to_name: 'I&A Services',
+                to_name: 'UnitedKcServices',
             };
 
             await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -63,25 +63,25 @@ const Contact = () => {
         {
             icon: Phone,
             title: 'Phone',
-            content: '+1 (913) 980-7242',
-            link: 'tel:+19139807242',
+            content: '913 244 6113',
+            link: 'tel:+19132446113',
         },
         {
             icon: Mail,
             title: 'Email',
-            content: 'info@iaservicesgroup.com',
-            link: 'mailto:info@iaservicesgroup.com',
+            content: 'unitedkcservices@gmail.com',
+            link: 'mailto:unitedkcservices@gmail.com',
         },
         {
             icon: MapPin,
             title: 'Service Area',
-            content: 'Kansas City Metro Area',
+            content: 'Kansas City',
             link: null,
         },
         {
             icon: Clock,
             title: 'Hours',
-            content: 'Mon-Sat: 8AM - 6PM',
+            content: 'Mon-Fri & Sun: 8AM - 6PM',
             link: null,
         },
     ];
@@ -152,11 +152,11 @@ const Contact = () => {
                                 Call us now for same-day service availability.
                             </p>
                             <a
-                                href="tel:+19139807242"
+                                href="tel:+19132446113"
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-600 rounded-xl font-semibold hover:bg-primary-50 transition-colors"
                             >
                                 <Phone className="w-5 h-5" />
-                                Call (913) 980-7242
+                                Call (913) 244-6113
                             </a>
                         </div>
                     </motion.div>

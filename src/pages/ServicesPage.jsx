@@ -25,7 +25,7 @@ const services = [
         description: 'Comprehensive air duct cleaning services for residential and commercial properties. We remove dust, allergens, and contaminants to improve your indoor air quality.',
         icon: Wind,
         color: 'from-primary-500 to-primary-600',
-        image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80',
+        image: '/images/services/air-duct-cleaning.png',
         features: [
             'Complete duct system cleaning',
             'HEPA-filtered vacuum equipment',
@@ -42,7 +42,7 @@ const services = [
         description: 'Our Residential Air Duct Cleaning service focuses on eliminating allergens, dust, and pollutants that accumulate in your ductwork over time.',
         icon: Home,
         color: 'from-blue-500 to-blue-600',
-        image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80',
+        image: '/images/services/residential-duct-cleaning.png',
         features: [
             'Allergen and dust removal',
             'Pet dander elimination',
@@ -59,7 +59,7 @@ const services = [
         description: 'We ensure that your workplace air ducts are free from contaminants that can affect employee health and productivity.',
         icon: Building2,
         color: 'from-purple-500 to-purple-600',
-        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+        image: '/images/services/commercial-duct-cleaning.png',
         features: [
             'Minimal business disruption',
             'After-hours service available',
@@ -76,7 +76,7 @@ const services = [
         description: 'Our Chimney Sweep service provides comprehensive cleaning to prevent the buildup of creosote and other flammable materials that can lead to chimney fires.',
         icon: Flame,
         color: 'from-orange-500 to-orange-600',
-        image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80',
+        image: '/images/services/chimney-sweep.png',
         features: [
             'Creosote removal',
             'Flue cleaning',
@@ -93,7 +93,7 @@ const services = [
         description: 'Our Fireplace Inspection service offers a detailed examination of your fireplace and chimney system to ensure they are in safe working condition.',
         icon: Search,
         color: 'from-red-500 to-red-600',
-        image: 'https://images.unsplash.com/photo-1545873324-bb42e59ca61f?w=800&q=80',
+        image: '/images/services/fireplace-inspection.png',
         features: [
             'Complete safety check',
             'Blockage detection',
@@ -110,7 +110,7 @@ const services = [
         description: 'Our Clothes Dryer Cleaning Service is dedicated to ensuring the safety and efficiency of your laundry appliances.',
         icon: Shirt,
         color: 'from-teal-500 to-teal-600',
-        image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=800&q=80',
+        image: '/images/services/dryer-cleaning.png',
         features: [
             'Lint removal',
             'Vent cleaning',

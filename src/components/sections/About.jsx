@@ -5,9 +5,9 @@ import { ArrowRight, Award, Users, Calendar, CheckCircle } from 'lucide-react';
 
 const About = () => {
     const stats = [
-        { icon: Users, value: '10,000+', label: 'Happy Customers' },
-        { icon: Calendar, value: '15+', label: 'Years Experience' },
-        { icon: Award, value: '100%', label: 'Satisfaction Rate' },
+        { icon: Users, value: 'Skilled & Trained', label: 'Technicians' },
+        { icon: Calendar, value: 'Serving Kansas City', label: '& Nearby Areas' },
+        { icon: Award, value: 'Modern Tools &', label: 'Thorough Cleaning' },
     ];
 
     const features = [
@@ -32,13 +32,29 @@ const About = () => {
                         className="relative"
                     >
                         <div className="relative">
-                            {/* Main Image */}
-                            <div className="rounded-3xl overflow-hidden shadow-2xl">
-                                <img
-                                    src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80"
-                                    alt="I&A Services team"
-                                    className="w-full h-[500px] object-cover"
-                                />
+                            {/* Scrollable Service Gallery */}
+                            <div className="overflow-x-auto scrollbar-hide pb-4">
+                                <div className="flex gap-4" style={{ width: 'max-content' }}>
+                                    {[
+                                        { title: 'Air Duct Cleaning', image: '/images/services/air-duct-cleaning.png' },
+                                        { title: 'Residential Cleaning', image: '/images/services/residential-duct-cleaning.png' },
+                                        { title: 'Commercial Cleaning', image: '/images/services/commercial-duct-cleaning.png' },
+                                        { title: 'Chimney Sweep', image: '/images/services/chimney-sweep.png' },
+                                        { title: 'Dryer Cleaning', image: '/images/services/dryer-cleaning.png' },
+                                        { title: 'Fireplace Inspection', image: '/images/services/fireplace-inspection.png' },
+                                    ].map((service, index) => (
+                                        <div key={index} className="flex-shrink-0 w-72 sm:w-80">
+                                            <div className="rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-[400px] sm:h-[500px] object-cover"
+                                                />
+                                            </div>
+                                            <p className="text-center mt-3 font-semibold text-gray-800">{service.title}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             {/* Experience Badge */}
@@ -47,7 +63,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.4 }}
-                                className="absolute -bottom-8 -right-8 bg-gradient-to-r from-primary-500 to-secondary-500 text-white p-8 rounded-3xl shadow-2xl"
+                                className="absolute -bottom-8 -right-8 bg-gradient-to-r from-primary-500 to-secondary-500 text-white p-8 rounded-3xl shadow-2xl z-10"
                             >
                                 <p className="text-5xl font-bold">15+</p>
                                 <p className="text-lg font-medium">Years of Excellence</p>
@@ -66,7 +82,7 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <span className="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-4">
-                            About I&A Services
+                            About UnitedKcServices
                         </span>
 
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6">
@@ -74,14 +90,14 @@ const About = () => {
                         </h2>
 
                         <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            At I&A Services, we&apos;re dedicated to providing top-quality air duct cleaning and
-                            HVAC maintenance services to homes and businesses throughout the Kansas City metro area.
+                            At UnitedKcServices, we connect you with trusted, experienced technicians across Kansas City
+                            who specialize in air duct cleaning and HVAC maintenance services.
                         </p>
 
                         <p className="text-gray-600 mb-8 leading-relaxed">
-                            Our team of certified professionals uses the latest equipment and techniques to ensure
-                            your air systems are clean, efficient, and safe. We take pride in our attention to detail
-                            and commitment to customer satisfaction.
+                            Our network of certified professionals uses the latest equipment and techniques to ensure
+                            your air systems are clean, efficient, and safe. We take pride in our customer-focused
+                            service philosophy and commitment to your satisfaction.
                         </p>
 
                         {/* Features Grid */}
@@ -119,7 +135,7 @@ const About = () => {
                             <div className="w-16 h-16 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
                                 <stat.icon className="w-8 h-8 text-primary-500" />
                             </div>
-                            <p className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</p>
+                            <p className="text-2xl font-bold text-gray-900 mb-2">{stat.value}</p>
                             <p className="text-gray-600">{stat.label}</p>
                         </motion.div>
                     ))}

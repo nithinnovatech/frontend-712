@@ -55,58 +55,55 @@ const Footer = () => {
                         <Link to="/" className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                             {/* Footer Logo */}
                             <div className="relative">
-                                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-lg">
-                                    <Wind className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                                </div>
+                                <img
+                                    src="/images/logo-icon.png"
+                                    alt="UnitedKcServices Logo"
+                                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-contain"
+                                />
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-xl sm:text-2xl font-bold font-heading text-white">
-                                    I&A <span className="text-primary-400">Services</span>
+                                    UnitedKc<span className="text-primary-400">Services</span>
                                 </span>
                                 <span className="text-[10px] sm:text-xs text-gray-400">
-                                    Air Duct Cleaning Experts
+                                    Connecting You to Local Experts
                                 </span>
                             </div>
                         </Link>
                         <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 leading-relaxed max-w-md">
-                            Professional air duct cleaning and HVAC services in Kansas City and surrounding areas.
-                            Cleaner air, improved efficiency, and peace of mind.
+                            We help you find trusted, experienced technicians across Kansas City who specialize in air duct cleaning. Our network of professionals delivers high-quality service, cleaner air, and better HVAC efficiency.
                         </p>
 
                         {/* Contact Info */}
                         <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                             <a
-                                href="tel:+19139807242"
+                                href="tel:+19132446113"
                                 className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base text-gray-300 hover:text-primary-400 transition-colors"
                             >
                                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
-                                <span>+1 (913) 980-7242</span>
+                                <span>913 244 6113</span>
                             </a>
                             <a
-                                href="mailto:info@iaservicesgroup.com"
+                                href="mailto:unitedkcservices@gmail.com"
                                 className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base text-gray-300 hover:text-primary-400 transition-colors"
                             >
                                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
-                                <span className="break-all">info@iaservicesgroup.com</span>
+                                <span className="break-all">unitedkcservices@gmail.com</span>
                             </a>
                             <div className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-300">
                                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400 mt-0.5" />
-                                <span>Kansas City Metro Area</span>
+                                <span>Kansas City</span>
                             </div>
                         </div>
 
-                        {/* Social Links */}
-                        <div className="flex gap-3">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.label}
-                                    href={social.href}
-                                    aria-label={social.label}
-                                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-800 hover:bg-primary-500 flex items-center justify-center transition-all duration-300"
-                                >
-                                    <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            ))}
+                        {/* Business Hours */}
+                        <div className="mt-4 sm:mt-6">
+                            <h4 className="text-white font-semibold text-base mb-3">Business Hours</h4>
+                            <div className="space-y-1 text-sm text-gray-400">
+                                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                <p>Sunday: 8:00 AM - 6:00 PM</p>
+                                <p>Saturday: Closed</p>
+                            </div>
                         </div>
                     </div>
 
@@ -186,7 +183,7 @@ const Footer = () => {
                 <div className="container-custom py-4 sm:py-6">
                     <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
                         <p className="text-gray-500 text-xs sm:text-sm text-center sm:text-left">
-                            © {currentYear} I&A Services. All rights reserved.
+                            © {currentYear} UnitedKcServices. All rights reserved.
                         </p>
                         <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
                             <Link to="/privacy" className="hover:text-primary-400 transition-colors">
