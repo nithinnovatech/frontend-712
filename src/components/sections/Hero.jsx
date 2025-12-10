@@ -90,7 +90,7 @@ const Hero = () => {
                             {/* Main Image */}
                             <div className="rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80"
+                                    src="/images/services/air-duct-cleaning.png"
                                     alt="Professional air duct cleaning"
                                     className="w-full h-96 object-cover"
                                 />

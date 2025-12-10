@@ -68,17 +68,7 @@ const About = () => {
                                 </div>
                             </div>
 
-                            {/* Experience Badge */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                                className="absolute -bottom-8 -right-8 bg-gradient-to-r from-primary-500 to-secondary-500 text-white p-8 rounded-3xl shadow-2xl z-10"
-                            >
-                                <p className="text-5xl font-bold">15+</p>
-                                <p className="text-lg font-medium">Years of Excellence</p>
-                            </motion.div>
+
 
                             {/* Decorative Element */}
                             <div className="absolute -top-8 -left-8 w-24 h-24 bg-accent-500/20 rounded-full blur-2xl" />
