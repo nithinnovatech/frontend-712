@@ -2,7 +2,6 @@ import React, { useState, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Phone, Calendar, User, Mail, MessageSquare, Wrench, MapPin, Clock } from 'lucide-react';
 import toast from 'react-hot-toast';
-import emailjs from '@emailjs/browser';
 
 // Create context for booking modal
 const BookingContext = createContext();
@@ -43,7 +42,6 @@ export const BookingProvider = ({ children }) => {
 
 const BookingModal = () => {
     const { isOpen, closeBooking, selectedService } = useBooking();
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -87,49 +85,45 @@ const BookingModal = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
 
-        try {
-            // EmailJS configuration - Replace these with your actual EmailJS credentials
-            const serviceId = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-            const templateId = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-            const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+        // Create email body with booking details
+        const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Service: ${formData.service}
+Preferred Date: ${formData.preferredDate}
+Preferred Time: ${formData.preferredTime}
+Address: ${formData.address}
 
-            const templateParams = {
-                from_name: formData.name,
-                from_email: formData.email,
-                phone: formData.phone,
-                service: formData.service,
-                preferred_date: formData.preferredDate,
-                preferred_time: formData.preferredTime,
-                address: formData.address,
-                message: formData.message,
-                to_name: 'I&A Services',
-                booking_type: 'Service Booking Request',
-            };
+Additional Details:
+${formData.message || 'No additional details provided'}
+        `.trim();
 
-            await emailjs.send(serviceId, templateId, templateParams, publicKey);
+        // Create mailto link
+        const subject = `Service Booking Request - ${formData.service}`;
+        const mailtoLink = `mailto:unitedkcservices@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
-            toast.success('Booking request sent successfully! We\'ll contact you shortly to confirm.');
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                service: '',
-                preferredDate: '',
-                preferredTime: '',
-                address: '',
-                message: '',
-            });
-            closeBooking();
-        } catch (error) {
-            console.error('EmailJS Error:', error);
-            toast.error('Failed to send booking request. Please try again or call us directly.');
-        } finally {
-            setIsSubmitting(false);
-        }
+        // Open email client
+        window.location.href = mailtoLink;
+
+        // Show success message
+        toast.success('Opening your email client...');
+
+        // Reset form
+        setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            service: '',
+            preferredDate: '',
+            preferredTime: '',
+            address: '',
+            message: '',
+        });
+        closeBooking();
     };
 
     // Get minimum date (today)
@@ -340,36 +334,13 @@ const BookingModal = () => {
                                 </button>
                                 <motion.button
                                     type="submit"
-                                    disabled={isSubmitting}
-                                    className="order-1 sm:order-2 flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="order-1 sm:order-2 flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    {isSubmitting ? (
-                                        <>
-                                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                                                <circle
-                                                    className="opacity-25"
-                                                    cx="12"
-                                                    cy="12"
-                                                    r="10"
-                                                    stroke="currentColor"
-                                                    strokeWidth="4"
-                                                    fill="none"
-                                                />
-                                                <path
-                                                    className="opacity-75"
-                                                    fill="currentColor"
-                                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                                />
-                                            </svg>
-                                            Sending...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Send className="w-5 h-5" />
-                                            Submit Booking
-                                        </>
-                                    )}
+                                    <>
+                                        <Send className="w-5 h-5" />
+                                        Submit Booking
+                                    </>
                                 </motion.button>
                             </div>
 
