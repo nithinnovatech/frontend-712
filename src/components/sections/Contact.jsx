@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../../config/emailConfig';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -13,6 +15,8 @@ const Contact = () => {
         message: '',
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -20,40 +24,62 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
-        // Create email body with form data
-        const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Address: ${formData.address}
-Service: ${formData.service || 'Not specified'}
+        // Prepare template parameters for EmailJS
+        const templateParams = {
+            from_name: formData.name,
+            from_email: formData.email,
+            from_phone: formData.phone,
+            address: formData.address,
+            service: formData.service || 'Not specified',
+            message: formData.message || 'No additional message provided',
+            current_date: new Date().toLocaleString('en-US', {
+                dateStyle: 'full',
+                timeStyle: 'short'
+            })
+        };
 
-Message:
-${formData.message || 'No message provided'}
-        `.trim();
+        try {
+            // Send email using EmailJS
+            const response = await emailjs.send(
+                emailConfig.serviceId,
+                emailConfig.templateId,
+                templateParams,
+                emailConfig.publicKey
+            );
 
-        // Create mailto link
-        const subject = `Service Request from ${formData.name}`;
-        const mailtoLink = `mailto:unitedkcservices@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            console.log('Email sent successfully:', response);
 
-        // Open email client
-        window.location.href = mailtoLink;
+            // Show success message
+            toast.success('Message sent successfully! We\'ll get back to you soon.', {
+                duration: 5000,
+                icon: '✅',
+            });
 
-        // Show success message
-        toast.success('Opening your email client...');
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                service: '',
+                message: '',
+            });
 
-        // Reset form
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            address: '',
-            service: '',
-            message: '',
-        });
+        } catch (error) {
+            console.error('Email sending failed:', error);
+
+            // Show error message
+            toast.error('Failed to send message. Please try calling us directly.', {
+                duration: 5000,
+                icon: '❌',
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const contactInfo = [
@@ -282,12 +308,28 @@ ${formData.message || 'No message provided'}
                                 {/* Submit Button */}
                                 <motion.button
                                     type="submit"
-                                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
+                                    disabled={isSubmitting}
+                                    className={`w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${isSubmitting
+                                            ? 'bg-gray-400 cursor-not-allowed'
+                                            : 'bg-primary-500 hover:bg-primary-600 text-white'
+                                        }`}
+                                    whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                                 >
-                                    <Send className="w-5 h-5" />
-                                    Send Message
+                                    {isSubmitting ? (
+                                        <>
+                                            <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Sending...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Send className="w-5 h-5" />
+                                            Send Message
+                                        </>
+                                    )}
                                 </motion.button>
                             </div>
                         </form>

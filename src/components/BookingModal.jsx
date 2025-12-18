@@ -2,6 +2,8 @@ import React, { useState, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Phone, Calendar, User, Mail, MessageSquare, Wrench, MapPin, Clock } from 'lucide-react';
 import toast from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../config/emailConfig';
 
 // Create context for booking modal
 const BookingContext = createContext();
@@ -42,6 +44,7 @@ export const BookingProvider = ({ children }) => {
 
 const BookingModal = () => {
     const { isOpen, closeBooking, selectedService } = useBooking();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -85,45 +88,71 @@ const BookingModal = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
-        // Create email body with booking details
-        const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Service: ${formData.service}
-Preferred Date: ${formData.preferredDate}
-Preferred Time: ${formData.preferredTime}
-Address: ${formData.address}
+        try {
+            // Prepare template parameters for EmailJS
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                from_phone: formData.phone,
+                service_type: formData.service,
+                preferred_date: formData.preferredDate,
+                preferred_time: formData.preferredTime,
+                address: formData.address,
+                message: formData.message || 'No additional details provided',
+                current_date: new Date().toLocaleString('en-US', {
+                    dateStyle: 'full',
+                    timeStyle: 'short'
+                }),
+                to_email: 'unitedkcservices@gmail.com',
+            };
 
-Additional Details:
-${formData.message || 'No additional details provided'}
-        `.trim();
+            // Send email using EmailJS
+            await emailjs.send(
+                emailConfig.serviceId,
+                emailConfig.templateId,
+                templateParams,
+                emailConfig.publicKey
+            );
 
-        // Create mailto link
-        const subject = `Service Booking Request - ${formData.service}`;
-        const mailtoLink = `mailto:unitedkcservices@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            // Show success message
+            toast.success('Booking request sent successfully! We\'ll contact you soon.', {
+                duration: 5000,
+                icon: '✅',
+            });
 
-        // Open email client
-        window.location.href = mailtoLink;
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                service: '',
+                preferredDate: '',
+                preferredTime: '',
+                address: '',
+                message: '',
+            });
 
-        // Show success message
-        toast.success('Opening your email client...');
+            closeBooking();
+        } catch (error) {
+            console.error('EmailJS Error:', error);
 
-        // Reset form
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            service: '',
-            preferredDate: '',
-            preferredTime: '',
-            address: '',
-            message: '',
-        });
-        closeBooking();
+            // Show error message with helpful information
+            if (error.text === 'The public key is required') {
+                toast.error('Email service not configured. Please contact us at (913) 244-6113.', {
+                    duration: 6000,
+                });
+            } else {
+                toast.error('Failed to send booking request. Please call us at (913) 244-6113.', {
+                    duration: 6000,
+                });
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // Get minimum date (today)
@@ -334,12 +363,26 @@ ${formData.message || 'No additional details provided'}
                                 </button>
                                 <motion.button
                                     type="submit"
-                                    className="order-1 sm:order-2 flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                                    whileTap={{ scale: 0.98 }}
+                                    disabled={isSubmitting}
+                                    className="order-1 sm:order-2 flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                                 >
                                     <>
-                                        <Send className="w-5 h-5" />
-                                        Submit Booking
+                                        {isSubmitting ? (
+                                            <>
+                                                <motion.div
+                                                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                                                    animate={{ rotate: 360 }}
+                                                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                                                />
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Send className="w-5 h-5" />
+                                                Submit Booking
+                                            </>
+                                        )}
                                     </>
                                 </motion.button>
                             </div>
