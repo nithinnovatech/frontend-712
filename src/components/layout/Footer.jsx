@@ -56,7 +56,7 @@ const Footer = () => {
                             {/* Footer Logo */}
                             <div className="relative">
                                 <img
-                                    src="/images/logo-icon.png"
+                                    src="/images/logo-icon.jpg"
                                     alt="UnitedKcServices Logo"
                                     className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-contain"
                                 />

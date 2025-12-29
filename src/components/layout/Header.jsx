@@ -86,7 +86,7 @@ const Header = () => {
                         {/* Logo Image */}
                         <div className="relative">
                             <img
-                                src="/images/logo-icon.png"
+                                src="/images/logo-icon.jpg"
                                 alt="UnitedKcServices Logo"
                                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain"
                             />
